@@ -4,12 +4,22 @@ body {
     padding: 0;
 }
 
-nav {
-    background-color: green;
+/* --------------------------------------HEADER-------------------------------------- */
+.header-container {
+    height: 20vh;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+/*------------NAVBAR------------*/
+.navbar {
+    background-color: #c5e0f4;
+}
+
+/* --------------------------------------MAIN-------------------------------------- */
+.main-container {
+    height: 73vh;
+}
+
+/* --------------------------------------FOOTER-------------------------------------- */
+.footer-container {
+    height: 7vh;
 }
