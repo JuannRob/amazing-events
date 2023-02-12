@@ -16,60 +16,195 @@
     <header>
         <div class="header-container container-fluid">
             <div class="row h-50">
-                <nav class="navbar">
+                <nav class="navbar navbar-dark bg-dark px-4">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="./index.html"><img src="./assets/images/Logo Amazing Events.png"
                                 alt="Logo" width="150"></a>
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <ul class="nav nav-justified gap-3 d-none d-lg-flex">
+                            <li class="nav-item bg-body border border-dark">
+                                <a class="nav-link text-reset h-100 d-flex align-items-center justify-content-center"
+                                    href="#">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Upcoming Events</a>
+                            <li class="nav-item bg-body border border-dark">
+                                <a class="nav-link text-reset lh-1" href="#">Upcoming Events</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Past Events</a>
+                            <li class="nav-item bg-body border border-dark">
+                                <a class="nav-link text-reset lh-1" href="#">Past Events</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link">Contact</a>
+                            <li class="nav-item bg-body border border-dark">
+                                <a class="nav-link text-reset h-100 d-flex align-items-center justify-content-center"
+                                    href="#">Contact</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Stats</a>
+                            <li class="nav-item bg-body border border-dark">
+                                <a class="nav-link text-reset h-100 d-flex align-items-center justify-content-center"
+                                    href="#">Stats</a>
                             </li>
                         </ul>
+                        <button class="navbar-toggler d-lg-none rounded-0" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                            aria-labelledby="offcanvasDarkNavbarLabel">
+                            <div class="offcanvas-header justify-content-end">
+                                <button type="button" class="btn-close btn-close-white me-3 mt-2"
+                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Upcoming Events</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Past Events</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Contact</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Stats</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </div>
 
-            <div class="row arrow-nav h-50 justify-content-between align-items-center border border-primary">
+            <div
+                class="row arrow-nav justify-content-between align-items-center border border-dark border-start-0 border-end-0">
                 <div class="col-3 text-center">
-                    <a href=""><img src="./assets/icons/arrow_back_ios_black_36dp.svg" alt="My Happy SVG" /></a>
+                    <a href=""><img src="./assets/icons/arrow_back_ios_black_36dp.svg" alt="Back arrow" /></a>
                 </div>
                 <div class="col-6 text-center">
-                    <h2>HOME</h2>
+                    <h2>Home</h2>
                 </div>
                 <div class="col-3 text-center">
-                    <a href=""><img src="./assets/icons/arrow_forward_ios_black_36dp.svg" alt="My Happy SVG" /></a>
+                    <a href=""><img src="./assets/icons/arrow_forward_ios_black_36dp.svg" alt="Forward arrow" /></a>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="main-container container-fluid border border-danger">
+        <div class="main-container container-fluid">
+            <div class="row filter-bar align-items-center justify-content-evenly flex-column flex-lg-row flex-xxl-row">
+                <div class="col-12 col-sm-12 col-md-10 col-lg-6 col-xxl-6 d-flex flex-wrap justify-content-evenly">
+                    <div class="form-check mx-4 mx-sm-2 mx-md-0 mx-lg-0">
+                        <input class="form-check-input" type="checkbox" value="" id="check1">
+                        <label class="form-check-label" for="check1">
+                            Category
+                        </label>
+                    </div>
+                    <div class="form-check mx-4 mx-sm-2 mx-md-0 mx-lg-0">
+                        <input class="form-check-input" type="checkbox" value="" id="check2">
+                        <label class="form-check-label" for="check2">
+                            Category
+                        </label>
+                    </div>
+                    <div class="form-check mx-4 mx-sm-2 mx-md-0 mx-lg-0">
+                        <input class="form-check-input" type="checkbox" value="" id="check3">
+                        <label class="form-check-label" for="check3">
+                            Category
+                        </label>
+                    </div>
+                    <div class="form-check mx-4 mx-sm-2 mx-md-0 mx-lg-0">
+                        <input class="form-check-input" type="checkbox" value="" id="check4">
+                        <label class="form-check-label" for="check4">
+                            Category
+                        </label>
+                    </div>
+                    <div class="form-check mx-4 mx-sm-2 mx-md-0 mx-lg-0">
+                        <input class="form-check-input" type="checkbox" value="" id="check5">
+                        <label class="form-check-label" for="check5">
+                            Category
+                        </label>
+                    </div>
+                </div>
+                <div class="col-10 col-md-9 col-lg-6 col-xxl-3 justify-content-center">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2 border-dark rounded-0" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-secondary text-dark rounded-0 p-1 bg-dark" type="submit"><img
+                                src="./assets/icons/search_white_18dp.svg" width="25" alt="Search"
+                                class="p-0" /></button>
+                    </form>
+                </div>
+            </div>
+            <div class="row content justify-content-center justify-content-xxl-evenly gy-4 pb-4">
+                <div class="col-11 col-xxl-2">
+                    <div class="card border border-dark rounded-0 p-2">
+                        <img src="./assets/images/Music_Concert.jpg" class="card-img-top rounded-0" alt="Music Concert">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Título</h5>
+                            <p class="card-text text-center">Texto descriptivo</p>
+                        </div>
+                        <div class="card-footer border-0 bg-transparent d-flex justify-content-between">
+                            <p class="align-baseline">Price $0000</p>
+                            <a href="#" class="see-more text-reset px-4 pb-1">ver más...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11 col-xxl-2">
+                    <div class="card border border-dark rounded-0 p-2">
+                        <img src="./assets/images/Costume_Party.jpg" class="card-img-top rounded-0" alt="Costume Party">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Título</h5>
+                            <p class="card-text text-center">Texto descriptivo</p>
+                        </div>
+                        <div class="card-footer border-0 bg-transparent d-flex justify-content-between">
+                            <p class="align-baseline">Price $0000</p>
+                            <a href="#" class="see-more text-reset px-4 pb-1">ver más...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11 col-xxl-2">
+                    <div class="card border border-dark rounded-0 p-2">
+                        <img src="./assets/images/Marathon.jpg" class="card-img-top rounded-0" alt="Marathon">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Título</h5>
+                            <p class="card-text text-center">Texto descriptivo</p>
+                        </div>
+                        <div class="card-footer border-0 bg-transparent d-flex justify-content-between">
+                            <p class="align-baseline">Price $0000</p>
+                            <a href="#" class="see-more text-reset px-4 pb-1">ver más...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11 col-xxl-2">
+                    <div class="card border border-dark rounded-0 p-2">
+                        <img src="./assets/images/Museum_Tour.jpg" class="card-img-top rounded-0" alt="Museum Tour">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Título</h5>
+                            <p class="card-text text-center">Texto descriptivo</p>
+                        </div>
+                        <div class="card-footer border-0 bg-transparent d-flex justify-content-between">
+                            <p class="align-baseline">Price $0000</p>
+                            <a href="#" class="see-more text-reset px-4 pb-1">ver más...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <footer class="fixed-bottom">
-        <div class="footer-container container-fluid border border-primary">
-            <div class="row justify-content-between">
-                <div class="col-1">redes</div>
-                <div class="col-1">cohort</div>
+    <footer>
+        <div class="footer-container container-fluid border-top border-dark px-4">
+            <div class="row justify-content-between align-items-center h-100">
+                <div class="col-6 col-xxl-1 d-flex justify-content-between">
+                    <a href=""><img src="./assets/icons/instagram_rounded_icon.svg" width="35" alt="Instagram" /></a>
+                    <a href=""><img src="./assets/icons/facebook_rounded_icon.svg" width="35" alt="Facebook" /></a>
+                    <a href=""><img src="./assets/icons/whatsapp_rounded_icon.svg" width="35" alt="Whatsapp" /></a>
+                </div>
+                <div class="col-4 col-xxl-1">
+                    <p class="fs-2">Cohort</p>
+                </div>
             </div>
         </div>
     </footer>
-
-
 
     <!-- BOOTSTRAP SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
