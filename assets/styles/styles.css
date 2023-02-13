@@ -50,7 +50,7 @@ h2 {
 /*-------CARD-------*/
 .card-img-top {
     width: 100%;
-    height: 15rem;
+    height: 10rem;
     object-fit: cover;
 }
 
@@ -101,6 +101,18 @@ h2 {
         height: 50%;
     }
 
+    /*-------CARD-------*/
+    .card-img-top {
+        width: 100%;
+        height: 9rem;
+        object-fit: cover;
+    }
+
+    .card-body {
+        height: 6rem;
+    }
+
+
     /* --------------------------------------FOOTER-------------------------------------- */
     .footer-container {
         height: 3rem;
@@ -135,6 +147,17 @@ h2 {
     /*-------------CONTENT--------------*/
     .content {
         height: 50%;
+    }
+
+    /*-------CARD-------*/
+    .card-img-top {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+    }
+
+    .card-body {
+        height: 10rem;
     }
 
     /* --------------------------------------FOOTER-------------------------------------- */
