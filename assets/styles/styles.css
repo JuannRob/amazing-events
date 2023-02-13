@@ -107,7 +107,7 @@ h2 {
     }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 993px) and (max-width: 1399px) {
 
     body {
         height: auto;
@@ -129,7 +129,7 @@ h2 {
 
     /*------------FILTER BAR------------*/
     .filter-bar {
-        height: 12rem;
+        height: 10rem;
     }
 
     /*-------------CONTENT--------------*/
