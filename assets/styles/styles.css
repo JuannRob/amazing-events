@@ -130,6 +130,7 @@ tr {
 
 /* --------------------------------------FOOTER-------------------------------------- */
 .footer-container {
+    background-color: #e3026f79;
     width: 100vw;
     height: 7vh;
 }
@@ -221,6 +222,10 @@ tr {
 
     /* --------------------------------------FOOTER-------------------------------------- */
     .footer-container {
+        height: 3rem;
+    }
+
+    .footer-container>div {
         height: 3rem;
     }
 }
