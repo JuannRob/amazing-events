@@ -26,7 +26,8 @@ const eventsMap = data.events.map((evento) =>
 document.getElementById('cards-row').innerHTML = eventsMap;
 
 
-//filtra las categorias
+//Agrega las categorias del archivo 'data' a un Set para eliminar duplicados
+//y luego lo retorna como array
 const categoriesToArray = () => {
     let categorySet = new Set();
     data.events.forEach((evento) => {
@@ -35,6 +36,7 @@ const categoriesToArray = () => {
     return [...categorySet];
 }
 
+//Convierte las categorias en inputs de tipo checkbox
 const categoriesMap = categoriesToArray().map((category, i) =>
     `<div class="form-check mx-2 mx-md-0 mx-lg-2" id="category-${i}">
         <input class="form-check-input" type="checkbox" value="" id="input${i}">
