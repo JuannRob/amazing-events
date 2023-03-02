@@ -90,18 +90,16 @@
 
   <main>
     <div class="main-container container-fluid">
-      <div
+      <div id="filters-row"
         class="row filter-bar align-items-center justify-content-evenly justify-content-lg-center flex-column flex-lg-row flex-xxl-row">
         <div id="categories" class="col-12 col-md-9 col-lg-7 col-xl-6 d-flex flex-wrap justify-content-start ">
         </div>
-        <div class="col-10 col-sm-9 col-md-8 col-lg-4 col-xxl-3">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 border-dark rounded-0" type="search" placeholder="Search"
-              aria-label="Search">
-            <button class="btn btn-outline-secondary text-dark rounded-0 p-1 bg-dark" type="submit">
-              <img src="./assets/icons/search_white_18dp.svg" width="25" alt="Search" class="p-0">
-            </button>
-          </form>
+        <div class="col-10 col-sm-9 col-md-8 col-lg-4 col-xxl-3 d-flex">
+          <input id="input-search" class="form-control me-2 border-dark rounded-0" type="text" placeholder="Search"
+            aria-label="Search">
+          <button id="search-button" class="btn btn-outline-secondary text-dark rounded-0 p-1 bg-dark" type="button">
+            <img src="./assets/icons/search_white_18dp.svg" width="25" alt="Search" class="p-0">
+          </button>
         </div>
       </div>
       <div id="cards-row"

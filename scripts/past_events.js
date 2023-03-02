@@ -1,6 +1,7 @@
 import data from "../data/data.js";
+const { events, currentDate } = data;
 
-const pastEvents = data.events.filter(evento => evento.date < data.currentDate);
+const pastEvents = events.filter(evento => evento.date < currentDate);
 
 const eventsMap = pastEvents.map((evento) =>
     `<div class="col-11 col-sm-5 col-xl-3 col-xxl-2">
