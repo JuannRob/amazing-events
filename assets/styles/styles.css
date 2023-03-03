@@ -134,6 +134,10 @@ tr {
     height: 65%;
 }
 
+.main-container2 a {
+    color: black;
+}
+
 /* --------------------------------------FOOTER-------------------------------------- */
 .footer-container {
     background-color: #e3026f79;

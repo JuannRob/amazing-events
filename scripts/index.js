@@ -1,14 +1,12 @@
-import data from "../data/data.js";
 const { events } = data;
 
 //----------CARDS DINÁMICAS----------
-
-//Dado un array de objetos. Mapea cada item en una card y al finalizar renderiza el conjunto.
+/* Dado un array con eventos, mapea cada item en forma de card y al finalizar renderiza el conjunto.
+Si el array está vacío pide al cliente que cambie los filtros. */
 const renderCards = (objArray) => {
-    let results = '';
-
+    let res = '';
     if (objArray.length > 0) {
-        results = objArray.map((evento) =>
+        res = objArray.map((evento) =>
             `<div class="col-11 col-sm-5 col-xl-3 col-xxl-2">
         <div class="card border border-dark rounded-0 p-2" key=${evento._id}>
             <img src="${evento.image}" class="card-img-top rounded-0" alt="${evento.name}">
@@ -30,24 +28,23 @@ const renderCards = (objArray) => {
     </div>`
         ).join('');
     } else {
-        results = '<div class="col-12 text-center py-5"><p class="fs-4">No se encontraron resultados.</p> <p class="fs-5">Prueba cambiando los filtros.</p></div>'
+        res = '<div class="col-12 text-center py-5"><p class="fs-4">No se encontraron resultados.</p> <p class="fs-5">Prueba cambiando los filtros.</p></div>'
     }
 
-    document.getElementById('cards-row').innerHTML = results;
+    document.getElementById('cards-row').innerHTML = res;
 }
 
-//Inicializa la página con todos los eventos
+//Inicializa la página con todos los eventos.
 renderCards(events);
 
 //----------CATEGORIAS DINAMICAS----------
-
-//Guarda las categorias en un array omitiendo las repetidas
+//Guarda las categorias en un array omitiendo las repetidas.
 let catArr = [];
 events.forEach(evento => {
     if (!catArr.includes(evento.category)) catArr.push(evento.category)
 });
 
-//Convierte las categorias en inputs de tipo checkbox
+//Convierte las categorias en inputs de tipo checkbox.
 const categoriesMap = catArr.map((category, i) =>
     `<div class="form-check mx-2 mx-md-0 mx-lg-2" id="category-${i}">
         <input class="form-check-input" type="checkbox" value="${category}" id="input${i}">
@@ -57,91 +54,71 @@ const categoriesMap = catArr.map((category, i) =>
     </div>`
 ).join('');
 
-//Inserta todas las categorias como columnas dentro de un row
+//Inserta todas las categorias como columnas dentro de un row.
 document.getElementById('categories').innerHTML = categoriesMap;
 
 
 //----------FILTROS COMBINADOS----------
+//Este objeto contiene el string de búsqueda, las categorias para filtrar y los eventos resultados de dichos filtros.
 let filters = {
     'searchStr': '',
-    'categoriesArr': []
+    'selectedCategories': [],
+    'filteredEvents': events //Por defecto contiene todos los eventos.
+};
+let { searchStr, selectedCategories, filteredEvents } = filters;
+
+/*Función invocada con cualquier cambio en los filtros. Primero filtra por categoría, si las hay, luego por string de búsqueda, 
+si se encuentra. */
+const applyFilters = () => {
+    if (selectedCategories.length > 0) {
+        const res = events.filter(evento => selectedCategories.includes(evento.category))
+        filteredEvents = res;
+    } else {
+        filteredEvents = events;
+    }
+
+    if (searchStr !== '') {
+        const res = filteredEvents.filter(evento => evento.name.trim().toLowerCase().includes(inputSearch.value.trim().toLowerCase()) || evento.description.trim().toLowerCase().includes(inputSearch.value.trim().toLowerCase()));
+        filteredEvents = res;
+    }
+
+    renderCards(filteredEvents);
 }
 
-// const filterEvents = () => {
-//     const { searchRes, catRes } = filters;
-//     console.log('largo del search: ', searchRes.length, 'largo de cats: ', catRes.length);
-
-//     if (searchRes.length === 0 && catRes.length === events.length) {
-//         renderCards([]);
-//     } else if (searchRes.length > 0 && catRes.length === events.length) {
-//         renderCards(searchRes);
-//     } else if (catRes.length < events.length && searchRes.length === 0) {
-//         renderCards(catRes);
-//     } else if (catRes.length < events.length && searchRes.length > 0) {
-//         const combinedRes = catRes.filter(eventByCat => searchRes.includes(eventByCat))
-//         renderCards(combinedRes);
-//     }
-// }
-
-
-//----------BUSQUEDA DE NOMBRE----------
+//-----------LISTENERS-------------
 const searchBtn = document.getElementById('search-button');
 const inputSearch = document.getElementById('input-search');
 
-// const search = (arr = events) => {
-//     const cardsResult = arr.filter(evento => evento.name.toLowerCase().includes(inputSearch.value.toLowerCase()) || evento.description.toLowerCase().includes(inputSearch.value.toLowerCase()));
-//     if (cardsResult.length > 0) {
-//         filters.searchRes = cardsResult;
-//     } else {
-//         filters.searchRes = [];
-//     };
-//     console.log(filters);
-//     filterEvents();
-// }
-
-
-
-//---LISTENERS BUSCADOR----
-
-//Si se presiona la tecla Enter y encuentra un string en input cambia el valor de búsqueda
+//Si se presiona la tecla Enter y la búsqueda no es la actual, cambia el valor de búsqueda.
 inputSearch.addEventListener("keypress", (e) => {
-    if (e.key === "Enter" && inputSearch.value !== '') {
+    if (e.key === "Enter" && searchStr !== inputSearch.value) {
         e.preventDefault();
-        filters.searchStr = inputSearch.value
-        console.log('searchStr: ', filters.searchStr);
-    } else if (e.key === "Enter" && inputSearch.value === '') {
-        e.preventDefault();
+        searchStr = inputSearch.value
+        applyFilters();
     }
 });
 
-//Al presionar buscar cambia el valor de búsqueda
+//Al presionar 'buscar' cambia el valor de búsqueda solo si la búsqueda no es la actual.
 searchBtn.addEventListener("click", () => {
-    filters.searchStr = inputSearch.value
-    console.log('searchStr: ', filters.searchStr);
+    if (searchStr !== inputSearch.value) {
+        searchStr = inputSearch.value;
+        applyFilters();
+    }
 })
 
+//Contiene todos los inputs y labels.
+const catContainer = document.getElementById('categories');
 
-
-//----------FILTRAR POR CATEGORIA----------
-const catInputs = document.querySelectorAll('.form-check-input');
-const filteredCards = [];
-// catInputs.forEach(cat => {
-//     cat.onchange = () => {
-//         events.forEach(evento => {
-//             if (cat.value === evento.category && !filteredCards.includes(evento)) {
-//                 filteredCards.push(evento);
-//             } else if (cat.value === evento.category && filteredCards.includes(evento)) {
-//                 const eventIndex = filteredCards.findIndex(evnt => cat.value === evnt.category);
-//                 filteredCards.splice(eventIndex, 1);
-//             }
-//         });
-
-//         if (filteredCards.length > 0 && filteredCards.length < events.length) {
-//             filters.catRes = filteredCards;
-//         } else if (filteredCards.length === events.length || filteredCards.length === 0) {
-//             filters.catRes = events;
-//         }
-//         console.log(filters);
-//         filterEvents();
-//     }
-// })
+/* Recibe cualquier click en el area. Si es un checkbox y el valor del mismo no está ya entre los filtros
+lo agrega, de lo contrario lo quita. */
+catContainer.addEventListener('click', (e) => {
+    const target = e.target
+    if (target.type === "checkbox" && !selectedCategories.includes(target.value)) {
+        selectedCategories.push(target.value);
+        applyFilters();
+    } else if (target.type === "checkbox" && selectedCategories.includes(target.value)) {
+        const catIndex = selectedCategories.findIndex(cat => cat === target.value);
+        selectedCategories.splice(catIndex, 1);
+        applyFilters();
+    }
+})
